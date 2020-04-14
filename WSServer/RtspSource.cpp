@@ -231,7 +231,38 @@ bool RtspSource::Open()
 
     std::string openstr = "open:avc1." + GetMIME(Out_FormatContext->streams[out_video_index]->codecpar->extradata, Out_FormatContext->streams[out_video_index]->codecpar->extradata_size);
     if(out_audio_index != -1)
-        openstr += ",mp4q.40.2";
+    {
+        switch (Out_FormatContext->streams[out_audio_index]->codecpar->profile)
+        {
+            case FF_PROFILE_AAC_MAIN :
+                openstr += ",mp4a.40.1";
+                break;
+            case FF_PROFILE_AAC_LOW:
+                openstr += ",mp4a.40.2";
+                break;
+            case FF_PROFILE_AAC_SSR:
+                openstr += ",mp4a.40.3";
+                break;
+            case FF_PROFILE_AAC_LTP:
+                openstr += ",mp4a.40.4";
+                break;
+            case FF_PROFILE_AAC_HE:
+                openstr += ",mp4a.40.5";
+                break;
+            case FF_PROFILE_AAC_HE_V2:
+                openstr += ",mp4a.40.29";
+                break;
+            case FF_PROFILE_AAC_LD:
+                openstr += ",mp4a.40.23";
+                break;
+            case FF_PROFILE_AAC_ELD:
+                openstr += ",mp4a.40.39";
+                break;
+            default:
+                out_audio_index = -1;
+                break;
+        }
+    }
     sendWSString(openstr);
 
     ret = avformat_write_header(Out_FormatContext, &opts);
