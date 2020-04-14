@@ -9,7 +9,7 @@
 		
 		cd WSServer
 		make
-		
+---		
 	服务端依赖的第三方库:
 		boost		版本不宜过高，否则会与websocketpp不兼容，我使用的是yum安装的，版本号1.53
 		websocketpp	include中已有头文件，不需要单独编译，依赖boost
@@ -19,7 +19,7 @@
 	服务端运行方法：
 	
 		WSProxy 9001
-		
+---		
 		9001是服务端绑定的websocket端口
 ---
 *web端:*
@@ -30,7 +30,8 @@
 		var video1 = document.getElementById('video1');
         player = new wsplayer("ws://192.168.5.133:9001","rtsp://192.168.5.1/stream1",video1);    
         player.openws();
-		
+
+---		
 		在new wsplayer("ws://192.168.5.133:9001","rtsp://192.168.5.1/stream1",video1);中使用的三个参数，第一个是服务端的ws地址，第二个是要打开的rtsp地址，第三个是播放器绑定的htmldocument对象
 ---
 *原理:*
