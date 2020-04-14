@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>fmp4 player</title>  
+</head>
+<body>
+
+ 
+   <script type="text/javascript" src="./wsplayer.js" ></script>  
+  
+   <div class="wsplayer">
+   <video id="video1" width="320" height="240" controls="controls" autoplay="autoplay"></video>
+   </div>
+
+    <script>
+ 
+	window.onload = function () {	
+        var video1 = document.getElementById('video1');
+		video1.addEventListener('error',function(e){ console.error(e); });
+        player = new wsplayer("ws://127.0.0.1:9001","rtsp://127.0.0.1/stream1",video1);    
+        player.openws();
+    };
+
+ 
+    </script>
+	
+</body>
+</html>
