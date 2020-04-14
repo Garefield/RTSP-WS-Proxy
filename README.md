@@ -33,5 +33,6 @@ ClientPlayer目录下
 		
 在new wsplayer("ws://192.168.5.133:9001","rtsp://192.168.5.1/stream1",video1);中使用的三个参数，第一个是服务端的ws地址，第二个是要打开的rtsp地址，第三个是播放器绑定的htmldocument对象
 
-##原理:
+## 原理:
+
 web端将要打开的rtsp地址发送给服务端，服务端打开rtsp流成功后将流的mime发送给web并开始推送fmp4数据，web利用mime初始化mse，成功后将websocket收到的二进制数据交给mse播放，程序目前只支持h264视频和aac音频，如要接入其它格式，请修改服务端，在服务端进行转码工作
