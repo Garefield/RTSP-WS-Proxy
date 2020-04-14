@@ -250,13 +250,13 @@ bool RtspSource::Open()
                 openstr += ",mp4a.40.5";
                 break;
             case FF_PROFILE_AAC_HE_V2:
-                openstr += ",mp4a.40.29";
+                openstr += ",mp4a.40.1D";
                 break;
             case FF_PROFILE_AAC_LD:
-                openstr += ",mp4a.40.23";
+                openstr += ",mp4a.40.17";
                 break;
             case FF_PROFILE_AAC_ELD:
-                openstr += ",mp4a.40.39";
+                openstr += ",mp4a.40.27";
                 break;
             default:
                 out_audio_index = -1;
