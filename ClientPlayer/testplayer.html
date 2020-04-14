@@ -17,7 +17,7 @@
  
 	window.onload = function () {	
         var video1 = document.getElementById('video1');
-		video1.addEventListener('error',function(e){ console.error(e); });
+	video1.addEventListener('error',function(e){ console.error(e); });
         player = new wsplayer("ws://127.0.0.1:9001","rtsp://127.0.0.1/stream1",video1);    
         player.openws();
     };
