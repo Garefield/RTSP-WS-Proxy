@@ -27,7 +27,7 @@ ClientPlayer目录下
 	wsplayer.js是播放器，testplayer.html是示例，需要浏览器支持html5的mse
 	播放器使用方法示例：
 	
-		var video1 = document.getElementById('video1');
+	var video1 = document.getElementById('video1');
         player = new wsplayer("ws://192.168.5.133:9001","rtsp://192.168.5.1/stream1",video1);    
         player.openws();
 		
