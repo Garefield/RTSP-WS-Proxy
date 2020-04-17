@@ -95,8 +95,6 @@ class wsplayer {
 	
 	onUpdateEnd(e){
 		this.sourceBuffer.addEventListener('updateend', this.onUpdateEnd);
-		if (this.mediaplayer.readyState == 4)
-			this.mediaSource.ndOfStream();
 		this.loadvideo();
 	}
 	
