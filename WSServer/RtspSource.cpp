@@ -153,8 +153,11 @@ bool RtspSource::Open()
     	}
     	for (int i = 0; i < In_FormatContext->nb_streams; i++)
     	{
-		if ((In_FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
-            		|| (In_FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_AUDIO))
+		if (((In_FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
+                	&& (In_FormatContext->streams[i]->codecpar->codec_id == AV_CODEC_ID_H264))
+            	|| ((In_FormatContext->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_AUDIO)
+                	&& ((In_FormatContext->streams[i]->codecpar->codec_id == AV_CODEC_ID_AAC)
+                    		|| (In_FormatContext->streams[i]->codecpar->codec_id == AV_CODEC_ID_AAC_LATM))))
         	{
             		AVStream* in_stream = In_FormatContext->streams[i];
             		AVStream* out_stream = avformat_new_stream(Out_FormatContext, NULL);
@@ -169,19 +172,13 @@ bool RtspSource::Open()
             		}
            		if (in_stream->codecpar->codec_type == AVMEDIA_TYPE_AUDIO)
             		{
-                		if ((in_stream->codecpar->codec_id == AV_CODEC_ID_AAC) || (in_stream->codecpar->codec_id == AV_CODEC_ID_AAC_LATM))
-                		{
-                    			in_audio_index = in_stream->index;
-                    			out_audio_index = out_stream->index;
-                		}
+                    		in_audio_index = in_stream->index;
+                    		out_audio_index = out_stream->index;
             		}
             		if (in_stream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO)
             		{
-                		if (in_stream->codecpar->codec_id == AV_CODEC_ID_H264)
-                		{
-                    			in_video_index = in_stream->index;
-                    			out_video_index = out_stream->index;
-                		}
+                    		in_video_index = in_stream->index;
+                    		out_video_index = out_stream->index;
             		}
 			AVCodec* in_codec = avcodec_find_encoder(in_stream->codecpar->codec_id);
 			AVCodecContext *codec_ctx = avcodec_alloc_context3(in_codec);
