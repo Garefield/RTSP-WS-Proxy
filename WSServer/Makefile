@@ -12,8 +12,8 @@ LD = g++
 WINDRES = windres
 
 INC = -Iinclude -Iinclude/ffmpeg -Iinclude/websocketpp
-CFLAGS = -static -O2 -s
-CPPFLAGS = -std=c++11 -static -O2 -s
+CFLAGS = -fexceptions -O2
+CPPFLAGS = -std=c++11 -fexceptions -O2
 RESINC =
 LIBDIR = -Llib
 LIB =

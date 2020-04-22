@@ -31,9 +31,10 @@ class RtspSource
         virtual ~RtspSource();
         bool Open();
         void Close();
+        AVFifoBuffer* fmp4buf;
     public:
         bool Runing;
-        uint64_t m_tStart,OverTime;
+        //uint64_t m_tStart,OverTime;
 
         int  sendBinaryData(unsigned char *pData, int nSize);
     protected:
@@ -50,6 +51,7 @@ class RtspSource
     private:
 		void sendWSString(std::string wsstr);
         void ReadAndWrite();
+        void SendWSData();
 };
 
 #endif // RTSPSOURCE_H
