@@ -1,0 +1,14 @@
+--- libavformat/movenc_old.c	2020-04-22 14:44:40.214872728 +0800
++++ libavformat/movenc.c	2020-04-21 23:03:02.553841690 +0800
+@@ -3962,9 +3962,9 @@
+             mov->tracks[src_trk].tref_tag = mov->tracks[i].tag;
+             mov->tracks[src_trk].tref_id  = mov->tracks[i].track_id;
+             //src_trk may have a different timescale than the tmcd track
+-            mov->tracks[i].track_duration = av_rescale(mov->tracks[src_trk].track_duration,
++            mov->tracks[i].track_duration = 0;/*av_rescale(mov->tracks[src_trk].track_duration,
+                                                        mov->tracks[i].timescale,
+-                                                       mov->tracks[src_trk].timescale);
++                                                       mov->tracks[src_trk].timescale);*/
+         }
+     }
+ 
