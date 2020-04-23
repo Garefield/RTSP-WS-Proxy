@@ -17,7 +17,7 @@ CPPFLAGS = -std=c++11 -fexceptions -O2
 RESINC =
 LIBDIR = -Llib
 LIB =
-LDFLAGS = -m64 -ljsoncpp -lavfilter -lpostproc -lavformat -lavcodec -lavutil -lswresample -lboost_thread-mt -lboost_system-mt -pthread -lm -lz
+LDFLAGS = -ljsoncpp -lavfilter -lpostproc -lavformat -lavcodec -lavutil -lswresample -lboost_thread-mt -lboost_system-mt -pthread -lm -lz -s
 
 
 OUT = WSServer
