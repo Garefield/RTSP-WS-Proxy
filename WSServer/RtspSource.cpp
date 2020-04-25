@@ -241,7 +241,7 @@ bool RtspSource::Open()
     }
 
     AVDictionary *opts = NULL;
-    av_dict_set(&opts, "movflags", "frag_keyframe+empty_moov+omit_tfhd_offset+faststart+frag_custom+disable_chpl+dash+frag_discont+negative_cts_offsets", 0);
+    av_dict_set(&opts, "movflags", "movflags", "frag_keyframe+empty_moov+omit_tfhd_offset+faststart+dash+frag_custom", 0);
     av_dict_set(&opts, "frag_duration", "0", 0);
     av_dict_set(&opts, "min_frag_duration", "0", 0);
 
