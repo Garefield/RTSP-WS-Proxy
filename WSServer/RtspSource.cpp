@@ -244,7 +244,6 @@ bool RtspSource::Open()
     av_dict_set(&opts, "movflags", "frag_keyframe+empty_moov+omit_tfhd_offset+faststart+frag_custom+disable_chpl+dash+frag_discont+negative_cts_offsets", 0);
     av_dict_set(&opts, "frag_duration", "0", 0);
     av_dict_set(&opts, "min_frag_duration", "0", 0);
-    av_dict_set(&opts, "skip_iods", "true", 0);
 
     std::string openstr = "open:avc1." + GetMIME(Out_FormatContext->streams[out_video_index]->codecpar->extradata, Out_FormatContext->streams[out_video_index]->codecpar->extradata_size);
     if(out_audio_index != -1)
