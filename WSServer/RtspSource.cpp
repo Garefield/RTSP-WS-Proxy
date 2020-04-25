@@ -201,6 +201,7 @@ bool RtspSource::Open()
             }
             AVCodec* in_codec = avcodec_find_encoder(in_stream->codecpar->codec_id);
             AVCodecContext *codec_ctx = avcodec_alloc_context3(in_codec);
+            codec_ctx->framerate = {0,1};
             ret = avcodec_parameters_to_context(codec_ctx, in_stream->codecpar);
             if (ret < 0)
             {
